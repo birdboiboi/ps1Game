@@ -3,6 +3,9 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - Camera_Follow
     - CharacterCobntroller
+    - Collectable
+    - Game_Master
+    - TargetHover
     - WallManager
     - click
     - move2d
@@ -22,6 +25,71 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
   sceneClasses:
+    Assets/Scenes/Level01.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 16202}
+    - Class: 114
+      Script: {instanceID: 20662}
+    - Class: 114
+      Script: {instanceID: 24286}
+    - Class: 114
+      Script: {instanceID: 41978}
+    - Class: 114
+      Script: {instanceID: 82506}
+    - Class: 114
+      Script: {instanceID: 106452}
+    - Class: 114
+      Script: {instanceID: 108634}
+    - Class: 114
+      Script: {instanceID: 244378}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 136
+      Script: {instanceID: 0}
+    - Class: 143
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
     Assets/Scenes/Menue.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -31,13 +99,25 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
     - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -47,6 +127,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 76532}
     - Class: 114
       Script: {instanceID: 77838}
+    - Class: 114
+      Script: {instanceID: 106452}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -100,7 +182,15 @@ ScriptsOnlyBuild:
       Script: {instanceID: 41978}
     - Class: 114
       Script: {instanceID: 45572}
+    - Class: 114
+      Script: {instanceID: 82506}
+    - Class: 114
+      Script: {instanceID: 106452}
+    - Class: 114
+      Script: {instanceID: 108634}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 135
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
@@ -537,7 +627,7 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: cf49a8d21edf848b90cf303a226ee9c8
+      Hash: cd0d9a9b9aecec605b8bdfd1e78a0f53
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CharacterCobntroller
@@ -555,7 +645,7 @@ ScriptsOnlyBuild:
     className: return_flat_intersect
   - hash:
       serializedVersion: 2
-      Hash: 82b6f1f7308e489fd0c13049bb2334f2
+      Hash: 67c40d345ff0de581b8d635137b021bf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Camera_Follow
@@ -573,12 +663,6 @@ ScriptsOnlyBuild:
     className: move2d
   - hash:
       serializedVersion: 2
-      Hash: 975be73b1d363ef2753478d4e04bf717
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: WallManager
-  - hash:
-      serializedVersion: 2
       Hash: 38a4b8c5f9b8e2584bfb0d5322a8ff88
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -589,8 +673,39 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: click
+  - hash:
+      serializedVersion: 2
+      Hash: 67ba5ecedfec17fd977eff1174ad5a35
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Game_Master
+  - hash:
+      serializedVersion: 2
+      Hash: 568dcdff5852c5ef8dde69440ec2f00c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TargetHover
+  - hash:
+      serializedVersion: 2
+      Hash: 6958ce550b4266eb52a8a2271400e845
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Collectable
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: nothing
+  - hash:
+      serializedVersion: 2
+      Hash: 975be73b1d363ef2753478d4e04bf717
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WallManager
   platform: 5
   scenePathNames:
   - Assets/Scenes/Menue.unity
   - Assets/Scenes/play_test.unity
+  - Assets/Scenes/Level01.unity
   playerPath: C:/Users/jorda/Documents/Unity/ps1_game/ps1_game_jam.exe

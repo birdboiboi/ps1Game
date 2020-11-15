@@ -13,5 +13,6 @@ public class sway : MonoBehaviour
     void Update()
     {
         transform.Translate(new Vector3(swayRadius * Mathf.Sin(Time.time), swayRadius* Mathf.Cos(Time.time)));
+        transform.Rotate(0, .1f, 0);
     }
 }
