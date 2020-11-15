@@ -7,16 +7,39 @@ public class Camera_Follow : MonoBehaviour
     public Transform player;
     public Transform origin;
     public float transitionSpeed;
+    public bool camDir = false;
+    public float offsetDist = 4;
+    private CharacterCobntroller cntrl;
 
+    void Start()
+    {
+        cntrl = player.GetComponent<CharacterCobntroller>();
+    }
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            camDir = !camDir;
+        }
         Vector3 normalDir = player.transform.position - origin.transform.position;
-        Vector3 newPos = player.transform.position + Vector3.Normalize(normalDir) * 4;
-        float dist_targ_pos = Vector3.Magnitude(transform.position - newPos);
-        transform.position = Vector3.Lerp(transform.position, newPos , Time.deltaTime * transitionSpeed * dist_targ_pos);
+        if (camDir)
+        {
+            cntrl.invertCntrls = -1;
+            Vector3 newPos = player.transform.position + Vector3.Normalize(normalDir) * offsetDist;
+            float dist_targ_pos = Vector3.Magnitude(transform.position - newPos);
+            transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * transitionSpeed * dist_targ_pos);
+            transform.LookAt(origin.transform.position);
+        }
+        else
+        {
+            cntrl.invertCntrls = 1;
+            Vector3 newPos = origin.transform.position;
+            float dist_targ_pos = Vector3.Magnitude(transform.position - newPos);
+            transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * transitionSpeed * dist_targ_pos);
+            transform.LookAt(player.transform.position);
 
-        transform.LookAt(origin.transform.position);
+        }
        
     }
 

@@ -10,6 +10,7 @@ public class CharacterCobntroller : MonoBehaviour
     public float playerSpeed = 2.0f;
     public float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
+    public float invertCntrls = -1;
     private Vector3 tempMove;
     //private float windDrag = -3;
     public Transform cam;
@@ -33,8 +34,8 @@ public class CharacterCobntroller : MonoBehaviour
         }
 
         Vector3 normalDir = cam.position - transform.position;
-        Vector3 move = new Vector3(0, -Input.GetAxis("Horizontal"), 0);
-        move = Vector3.Cross(normalDir, move).normalized+ Vector3.Normalize(normalDir * Input.GetAxis("Vertical"));
+        Vector3 move = new Vector3(0, invertCntrls*Input.GetAxis("Horizontal"), 0);
+        move = Vector3.Cross(normalDir, move).normalized+ Vector3.Normalize(normalDir * Input.GetAxis("Vertical")* -invertCntrls);
         //Debug.Log(move);
         controller.Move(move * Time.deltaTime * playerSpeed);
         
