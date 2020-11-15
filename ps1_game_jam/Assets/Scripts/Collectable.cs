@@ -9,19 +9,11 @@ public class Collectable : MonoBehaviour
     public GameObject player2d;
     public Game_Master gm;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+ 
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider col)
     {
-        
-    }
-
-    void onTriggerEnter(Collider col)
-    {
+        Debug.Log(col.tag);
         if (col.tag == player3d.tag || col.tag == player2d.tag)
         {
             gm.letterCount++;
