@@ -7,8 +7,8 @@ public class CharacterCobntroller : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private float playerSpeed = 2.0f;
-    private float jumpHeight = 1.0f;
+    public float playerSpeed = 2.0f;
+    public float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     public Transform cam;
     private void Start()
@@ -31,9 +31,10 @@ public class CharacterCobntroller : MonoBehaviour
         }
 
         Vector3 normalDir = cam.position - transform.position;
-        Vector3 move = new Vector3(0, Input.GetAxis("Horizontal"), 0);
-        move = Vector3.Cross(normalDir, move).normalized;
-        controller.Move(move * Time.deltaTime);
+        Vector3 move = new Vector3(0, -Input.GetAxis("Horizontal"), 0);
+        move = Vector3.Cross(normalDir, move).normalized+ Vector3.Normalize(normalDir * Input.GetAxis("Vertical"));
+        Debug.Log(move);
+        controller.Move(move * Time.deltaTime * playerSpeed);
 
         if (move != Vector3.zero)
         {
@@ -41,15 +42,16 @@ public class CharacterCobntroller : MonoBehaviour
         }
 
         // Changes the height position of the player..
-        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        if (Input.GetButtonDown("Jump") )
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             Debug.Log("jump");
+           
         }
-
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
-        
+
+
     }
 }
 
