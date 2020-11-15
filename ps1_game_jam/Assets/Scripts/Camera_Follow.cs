@@ -19,4 +19,6 @@ public class Camera_Follow : MonoBehaviour
         transform.LookAt(origin.transform.position);
        
     }
+
+    
 }
