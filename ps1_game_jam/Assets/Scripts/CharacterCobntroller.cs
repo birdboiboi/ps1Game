@@ -34,8 +34,8 @@ public class CharacterCobntroller : MonoBehaviour
         }
 
         Vector3 normalDir = cam.position - transform.position;
-        Vector3 move = new Vector3(0, invertCntrls*Input.GetAxis("Horizontal"), 0);
-        move = Vector3.Cross(normalDir, move).normalized+ Vector3.Normalize(normalDir * Input.GetAxis("Vertical")* -invertCntrls);
+        Vector3 move = new Vector3(0, Input.GetAxis("Horizontal"), 0);
+        move = Vector3.Cross(normalDir, move).normalized+ Vector3.Normalize(normalDir * -Input.GetAxis("Vertical"));
         //Debug.Log(move);
         controller.Move(move * Time.deltaTime * playerSpeed);
         
@@ -52,12 +52,13 @@ public class CharacterCobntroller : MonoBehaviour
         }else if (!groundedPlayer)
         {
             normalDir = cam.position - transform.position;
-            tempMove = new Vector3(0, -Input.GetAxis("Horizontal"), 0);
-            tempMove = Vector3.Cross(normalDir, tempMove).normalized + Vector3.Normalize(normalDir * Input.GetAxis("Vertical"));
+            tempMove = new Vector3(0, Input.GetAxis("Horizontal"), 0);// * invertCntrls;
+            tempMove = Vector3.Cross(normalDir, tempMove).normalized + Vector3.Normalize(normalDir*-Input.GetAxis("Vertical"));// *invertCntrls;
             Debug.Log(tempMove);
-            controller.Move(tempMove * Time.deltaTime * playerSpeed);
+            controller.Move(invertCntrls*tempMove * Time.deltaTime * playerSpeed);
             
         }
+        
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
