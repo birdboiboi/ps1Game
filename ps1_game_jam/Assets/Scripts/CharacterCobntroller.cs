@@ -13,11 +13,15 @@ public class CharacterCobntroller : MonoBehaviour
     public Transform cam;
     private void Start()
     {
-        controller = gameObject.AddComponent<CharacterController>();
+        controller = gameObject.GetComponent<CharacterController>();
     }
 
     void Update()
     {
+        //Vector3 move = new Vector3(-3, 0, 0);
+        //Debug.Log(move);
+
+        //controller.Move(move * Time.deltaTime * playerSpeed);
         transform.LookAt(cam);
         groundedPlayer = controller.isGrounded;
         
@@ -26,8 +30,10 @@ public class CharacterCobntroller : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        Vector3 normalDir = cam.position - transform.position;
+        Vector3 move = new Vector3(0, Input.GetAxis("Horizontal"), 0);
+        move = Vector3.Cross(normalDir, move).normalized;
+        controller.Move(move * Time.deltaTime);
 
         if (move != Vector3.zero)
         {
@@ -43,6 +49,7 @@ public class CharacterCobntroller : MonoBehaviour
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+        
     }
 }
 

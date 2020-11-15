@@ -10,5 +10,6 @@ public class Camera_Follow : MonoBehaviour
     void Update()
     {
         transform.LookAt(target);
+        transform.position = target.position * Vector3.up;
     }
 }
