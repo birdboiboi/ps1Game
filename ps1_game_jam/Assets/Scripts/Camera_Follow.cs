@@ -10,6 +10,7 @@ public class Camera_Follow : MonoBehaviour
     public bool camDir = false;
     public float offsetDist = 4;
     private CharacterCobntroller cntrl;
+    private float tempSpeed;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class Camera_Follow : MonoBehaviour
         if (camDir)
         {
             cntrl.invertCntrls = -1;
+            cntrl.invertCntrls = tempSpeed;
             Vector3 newPos = player.transform.position + Vector3.Normalize(normalDir) * offsetDist;
             float dist_targ_pos = Vector3.Magnitude(transform.position - newPos);
             transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * transitionSpeed * dist_targ_pos);
@@ -34,6 +36,7 @@ public class Camera_Follow : MonoBehaviour
         else
         {
             cntrl.invertCntrls = 1;
+            cntrl.invertCntrls = tempSpeed * 100;
             Vector3 newPos = origin.transform.position;
             float dist_targ_pos = Vector3.Magnitude(transform.position - newPos);
             transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * transitionSpeed * dist_targ_pos);
