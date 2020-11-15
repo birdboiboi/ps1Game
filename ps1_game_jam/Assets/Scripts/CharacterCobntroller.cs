@@ -10,7 +10,7 @@ public class CharacterCobntroller : MonoBehaviour
     public float playerSpeed = 2.0f;
     public float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
-    public float invertCntrls = -1;
+    public float invertCntrls ;
     private Vector3 tempMove;
     //private float windDrag = -3;
     public Transform cam;
@@ -32,11 +32,10 @@ public class CharacterCobntroller : MonoBehaviour
         {
             playerVelocity.y = 0f;
         }
-
         Vector3 normalDir = cam.position - transform.position;
-        Vector3 move = new Vector3(0, Input.GetAxis("Horizontal"), 0);
-        move = Vector3.Cross(normalDir, move).normalized+ Vector3.Normalize(normalDir * -Input.GetAxis("Vertical"));
-        //Debug.Log(move);
+        Debug.Log(invertCntrls);
+        Vector3 move = new Vector3(0, invertCntrls* Input.GetAxis("Horizontal"), 0);
+        move = Vector3.Cross(normalDir, move).normalized + Vector3.Normalize(normalDir * -invertCntrls * Input.GetAxis("Vertical"));
         controller.Move(move * Time.deltaTime * playerSpeed);
         
        
@@ -46,17 +45,9 @@ public class CharacterCobntroller : MonoBehaviour
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             Debug.Log("jump");
-            tempMove = move;
-            Debug.Log(tempMove);
+            //tempMove = move;
+            //Debug.Log(tempMove);
 
-        }else if (!groundedPlayer)
-        {
-            normalDir = cam.position - transform.position;
-            tempMove = new Vector3(0, Input.GetAxis("Horizontal"), 0);// * invertCntrls;
-            tempMove = Vector3.Cross(normalDir, tempMove).normalized + Vector3.Normalize(normalDir*-Input.GetAxis("Vertical"));// *invertCntrls;
-            Debug.Log(tempMove);
-            controller.Move(invertCntrls*tempMove * Time.deltaTime * playerSpeed);
-            
         }
         
         playerVelocity.y += gravityValue * Time.deltaTime;
