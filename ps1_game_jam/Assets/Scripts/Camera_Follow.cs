@@ -11,15 +11,19 @@ public class Camera_Follow : MonoBehaviour
     public float offsetDist = 4;
     private CharacterCobntroller cntrl;
     private float tempSpeed;
+    public AudioSource audioSource;
 
     void Start()
     {
         cntrl = player.GetComponent<CharacterCobntroller>();
         tempSpeed = cntrl.playerSpeed;
+        audioSource.Play();
+
     }
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             camDir = !camDir;

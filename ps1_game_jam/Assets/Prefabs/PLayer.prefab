@@ -56,6 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 4
   jumpHeight: 2
+  invertCntrls: 0
   cam: {fileID: 0}
 --- !u!143 &4789210086779804581
 CharacterController:
@@ -74,7 +75,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.29, z: 0}
+  m_Center: {x: 0, y: 0.44, z: 0}
 --- !u!1001 &6162860153924628867
 PrefabInstance:
   m_ObjectHideFlags: 0

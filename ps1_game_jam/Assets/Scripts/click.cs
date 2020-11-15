@@ -44,7 +44,7 @@ public class click : MonoBehaviour
     public void OpenScene()
     {
         //SceneManager.LoadScene("play_test");
-        SceneManager.LoadScene("play_test");
+        SceneManager.LoadScene("Level01");
     }
     public void EndGame()
     {
